@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0kqwjibeo4qx"]
+[gd_scene load_steps=7 format=3 uid="uid://c0kqwjibeo4qx"]
 
-[ext_resource type="PackedScene" uid="uid://kwqbef21o0n2" path="res://Enemies/kolbold_weak.tscn" id="1_77d8x"]
+[ext_resource type="PackedScene" uid="uid://kwqbef21o0n2" path="res://GameObjects/Enemies/kolbold_weak.tscn" id="1_77d8x"]
 [ext_resource type="Texture2D" uid="uid://d1otqovefd5fq" path="res://Textures/dirt_full_new.png" id="1_ccxea"]
-[ext_resource type="PackedScene" uid="uid://b40ytqlclqf7s" path="res://Player/player.tscn" id="2_mn2bv"]
+[ext_resource type="PackedScene" uid="uid://b40ytqlclqf7s" path="res://GameObjects/Player/player.tscn" id="2_mn2bv"]
+[ext_resource type="PackedScene" uid="uid://dpj4m8rgotygv" path="res://GameObjects/Utility/enemy_spawner.tscn" id="4_uxcte"]
+[ext_resource type="Script" path="res://GameObjects/Utility/spawn_info.gd" id="5_2nrq0"]
+
+[sub_resource type="Resource" id="Resource_4fr2c"]
+script = ExtResource("5_2nrq0")
+time_start = 0
+time_end = 999999999
+enemy = ExtResource("1_77d8x")
+enemy_num = 1
+enemy_spawn_delay = 0
 
 [node name="World" type="Node2D"]
 
@@ -16,5 +26,5 @@ region_rect = Rect2(2.08165e-12, 2.08165e-12, 4000, 4000)
 
 [node name="Player" parent="." instance=ExtResource("2_mn2bv")]
 
-[node name="EnemyKolboldWeak" parent="." instance=ExtResource("1_77d8x")]
-position = Vector2(-50, 23)
+[node name="EnemySpawner" parent="." instance=ExtResource("4_uxcte")]
+spawns = Array[ExtResource("5_2nrq0")]([SubResource("Resource_4fr2c")])

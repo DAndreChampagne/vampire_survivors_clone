@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@export var movement_speed: float = Globals.movement_speed
+@export var movement_speed = Globals.movement_speed * 5
+@export var hp = 80.0
 
 @onready var sprite = $Sprite2D
 @onready var walk_timer = $Timer
@@ -35,3 +36,8 @@ func movement():
 	
 	move_and_slide()
 	
+
+
+func _on_hurt_box_hurt(damage):
+	hp -= damage
+	print("player hp left: " + str(hp))

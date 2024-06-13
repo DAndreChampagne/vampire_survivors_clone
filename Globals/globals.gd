@@ -1,3 +1,3 @@
 class_name Globals
 
-static var movement_speed = 100.0
+static var movement_speed: float = 100.0
