@@ -10,7 +10,7 @@ func _on_timer_timeout():
 	time += 1
 	
 	for x in spawns:
-		if (time >= x.time_start and time <= x.time_end):		
+		if time >= x.time_start and (x.time_end == -1 or time <= x.time_end):
 			if x.spawn_delay_counter < x.enemy_spawn_delay:
 				x.spawn_delay_counter += 1
 			else:
@@ -21,7 +21,7 @@ func _on_timer_timeout():
 					var p = get_random_position()
 					spawned_enemy.global_position = p
 					add_child(spawned_enemy)
-					print("Enemy spawned at " + str(spawned_enemy.global_position))
+#					print("Enemy spawned at " + str(spawned_enemy.global_position))
 					counter += 1
 
 func get_random_position() -> Vector2:
